@@ -7,12 +7,12 @@ import TodoList from './components/TodoComponents/TodoList';
 const initialTodosList =  [
   {
     task: 'Organize Garage',
-    id: 1528817077286,
+    id: '1528817077286',
     completed: false
   },
   {
     task: 'Bake Cookies',
-    id: 1528817084358,
+    id: '1528817084358',
     completed: false
   },
 ];
@@ -43,6 +43,7 @@ addTodo = () => {
 
   this.setState({
       todosList: newTodosList,
+      todoTitle: ''
   })
 }
   
@@ -51,7 +52,7 @@ addTodo = () => {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todo={this.state.todosList} />
-        <TodoForm createTodo={this.addTodo} clickVal={this.changerHandler}/>
+        <TodoForm value={this.state.todoTitle} createTodo={this.addTodo} clickVal={this.changerHandler}/>
       </div>
     );
   }

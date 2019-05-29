@@ -5,9 +5,9 @@ function TodoList (props) {
           return (
               <div>
                   {
-                      props.todo.map(todoObj => {
+                      props.todo.map((todoObj) => {
                           console.log(todoObj);
-                          return  (<div key="{todoObj.id}">{todoObj.task}</div>)
+                          return  (<div key="{todoObj}">{todoObj.task}</div>)
                       })
                   }
               </div>

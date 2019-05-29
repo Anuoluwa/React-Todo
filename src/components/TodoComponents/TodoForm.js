@@ -6,6 +6,7 @@ function TodoForm (props){
                 <input
                     onChange={props.clickVal}
                     type="text"
+                    value={props.value}
             />
             <button onClick={() => props.createTodo()}>Add Todo</button>
             <button>clear completed</button>
