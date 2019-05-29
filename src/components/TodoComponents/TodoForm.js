@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 
-class TodoForm extends Component {
-    render() {
+function TodoForm (props){
         return (
             <div>
                 <input
-                    value={this.state}
-                    onChange={this}
+                    onChange={props.clickVal}
                     type="text"
             />
-
-            <button onClick={this}>Add Todo</button>
-            <button onClick={this}>Clear completed</button>
-
+            <button onClick={() => props.createTodo()}>Add Todo</button>
+            <button>clear completed</button>
             </div>
         )
-    }
 }
 
 export default TodoForm;
