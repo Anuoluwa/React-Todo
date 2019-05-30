@@ -44,7 +44,6 @@ addTodo = () => {
       todosList: newTodosList,
       todoTitle: ''
   })
-  console.log(newTodo);
 }
 
 markComplete = (id) => {
@@ -58,7 +57,7 @@ markComplete = (id) => {
 
 removeTodo = (i) => {
   this.setState(currentState => ({
-    todosList: currentState.todosList.filter(todo => todo.completed == false)
+    todosList: currentState.todosList.filter(todo => todo.completed === false)
   }));
 }
   render() {
