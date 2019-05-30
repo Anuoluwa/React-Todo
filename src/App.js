@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'uuid';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
@@ -35,7 +34,7 @@ changerHandler = (event) => {
 addTodo = () => {
   const newTodo = {
       task: this.state.todoTitle,
-      id: uuid(),
+      id: Date.now(), 
       completed: false,
   };
 
@@ -46,13 +45,37 @@ addTodo = () => {
       todoTitle: ''
   })
 }
-  
+
+markComplete = (id) => {
+  this.setState({ todosList: this.state.todosList.map(todo => {
+    if(todo.id === id) {
+      todo.completed = !todo.completed
+    }
+    return todo;
+  })})
+}
+
+removeTodo = (i) => {
+  this.setState(currentState => ({
+    todosList: currentState.todosList.filter(todo => todo.completed === false)
+  }));
+}
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todo={this.state.todosList} />
-        <TodoForm value={this.state.todoTitle} createTodo={this.addTodo} clickVal={this.changerHandler}/>
+        <TodoList 
+          todo={this.state.todosList}
+          markComplete={this.markComplete}
+          removeTodo={this.removeTodo}
+        />
+        <TodoForm 
+          value={this.state.todoTitle} 
+          createTodo={this.addTodo} 
+          clickVal={this.changerHandler} 
+          todo={this.todosList} 
+          removeTodo={this.removeTodo}
+        />
       </div>
     );
   }
